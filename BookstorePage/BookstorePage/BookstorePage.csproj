@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Checkout.aspx" />
     <Content Include="CreditCardValidation.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="OrderConfirmationPage.aspx" />
@@ -67,6 +68,13 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookOrder.cs" />
     <Compile Include="Cart.cs" />
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CreditCardValidation.aspx.cs">
       <DependentUpon>CreditCardValidation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

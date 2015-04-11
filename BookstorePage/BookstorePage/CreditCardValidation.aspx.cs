@@ -54,8 +54,8 @@ namespace BookstorePage
                         break;
                 }
             }
-            TestingLbl.Text = retVal;
-            TestingLbl.Visible = true;
+            //TestingLbl.Text = retVal;
+            //TestingLbl.Visible = true;
             return retVal;
         }
         
@@ -115,6 +115,11 @@ namespace BookstorePage
         protected void Month_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //redirect to somewhere
         }
     }
 }
