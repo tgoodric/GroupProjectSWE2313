@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="CreditCardValidation.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="OrderConfirmationPage.aspx" />
     <Content Include="passwords.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,9 +81,18 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="OrderConfirmation.cs" />
+    <Compile Include="OrderConfirmationPage.aspx.cs">
+      <DependentUpon>OrderConfirmationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderConfirmationPage.aspx.designer.cs">
+      <DependentUpon>OrderConfirmationPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

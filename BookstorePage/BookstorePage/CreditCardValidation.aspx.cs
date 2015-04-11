@@ -80,19 +80,23 @@ namespace BookstorePage
                 cardNumber = CardNumBox.Text;
                 cardNumber = removeNonDigits(cardNumber);
                 expirationDate=new DateTime(expirationYear, expirationMonth, 1);
-                if(expirationDate > DateTime.Now)
+                if(expirationDate < DateTime.Now)
                 {
                     ExpiredCard.Visible = true;
+                    valid = false;
                 }
                 if (securityCode!=777)
                 {
-                    valid = false;
                     ErrorSecurityCode.Visible = true;
+                    valid = false;
                 }
                 if(cardNumber.Length != 16)//check for 16 digits
                 {
                     CardNumberWrongLength.Visible = true;
+                    valid = false;
+                    //throw new Exception();
                 }
+
             }
             catch(FormatException fex)
             {
@@ -100,15 +104,11 @@ namespace BookstorePage
             }
             catch(Exception ex)
             {
-                //
+                //deliberately
             }
             if (valid)
             {
-                //proceed to order confirm page
-            }
-            else
-            {
-                //reload with error message visible
+                Response.Redirect("~/OrderConfirmationPage.aspx");
             }
         }
 
