@@ -11,14 +11,22 @@ namespace BookstorePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Book> results = (List<Book>)Session["Results"];
-            List<Label> bookInformation = new List<Label>(); //Might not need
-            for (int i = 0; i < results.Count; i++)
+            List<Book> results = (List<Book>)Session["SearchResults"];
+            if (results.Count < 1)
             {
-                //Console.WriteLine(results[i].Title);
-                bookInformation.Add(new Label());
-                //bookInformation[i].Text = results[i];
+                Results.Text = (string)Session["SearchKey"];
+                
             }
+            else
+            {
+            //here there be dragons: HTML
+               for (int i = 0; i < results.Count; i++)
+               {
+                   //magic happens, results appear
+                   //Blake, Disney, this one's on you guys.
+               }
+            }
+            
         }
     }
 }

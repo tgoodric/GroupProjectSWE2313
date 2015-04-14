@@ -36,11 +36,12 @@
             }
             catch (System.IO.IOException ioex)
             {
-                //LabelError.Text = "Error: file parsing failure, aborting operation";
+                Label1.Text = "Error: file parsing failure, aborting operation";
             }
-            catch (FormatException forex)
-            {
+            catch (FormatException forex)   //Shouldn't occur, logic was set to find isbn of 
+            {                               //books with extraneous commas in csv file
                 //Label1.Text = booksList[booksList.Count - 1].ISBNNumber;
+                //Format of book list file changed to tab-separated text file
             }
             finally
             {
@@ -52,9 +53,12 @@
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         string searchBy = "";
-        searchBy = "Title";
+        //searchBy = "Title";
+        searchBy = DropDownList1.SelectedItem.Text;
+        //Session["SearchParam"]
         Session["SearchKey"] = searchBy;
-    
+        //Label1.Text = "Searching by: " + searchBy;
+        //Label1.Visible = true;
     }
 
     protected void Search_Click(object sender, EventArgs e)
@@ -63,10 +67,10 @@
         Session["SearchResults"] = new List<BookstorePage.Book>();
         List<BookstorePage.Book> results = (List<BookstorePage.Book>)Session["SearchResults"];
         string searchBy = (string)Session["SearchKey"];
-        //List[]
         List<BookstorePage.Book> books = (List<BookstorePage.Book>)Session["Books"];
         //provisional:
         string searchTerm;
+        bool validSelection = true;
         for (int i = 0; i < books.Count; i++)
         {
             searchTerm = TextBox1.Text;
@@ -139,13 +143,17 @@
                     }
                 default:
                     {
+                        validSelection = false;
                         break;
                     }
             }
             
         }
         Session["SearchResults"] = results;
-        Response.Redirect("SearchResultsPage.aspx");
+        if(validSelection)
+        {
+            Response.Redirect("~/SearchPage.aspx");            
+        }
     }
 
 </script>
@@ -169,10 +177,11 @@
     <p style="font-style: normal; font-variant: normal;  font-size: 30px; line-height: normal; font-family: arial">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
         <p style="font-style: normal; font-variant: normal;  font-size: 20px; line-height: normal; font-family: arial">
-        &nbsp;&nbsp;search by <asp:DropDownList ID="DropDownList1" runat="server" Height="20px" Width="129px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        &nbsp;&nbsp;search by <asp:DropDownList ID="DropDownList1" runat="server" Height="19px" Width="149px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                <asp:ListItem>[Make A Selection]</asp:ListItem>
                 <asp:ListItem>Title</asp:ListItem>
-                <asp:ListItem>Author</asp:ListItem>
                 <asp:ListItem>ISBN</asp:ListItem>
+                <asp:ListItem>Author</asp:ListItem>
                 <asp:ListItem>CRN</asp:ListItem>
                 <asp:ListItem>Semester</asp:ListItem>
                 <asp:ListItem>Class</asp:ListItem>
