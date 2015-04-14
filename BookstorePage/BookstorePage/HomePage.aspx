@@ -184,7 +184,7 @@
                 <asp:ListItem>Author</asp:ListItem>
                 <asp:ListItem>CRN</asp:ListItem>
                 <asp:ListItem>Semester</asp:ListItem>
-                <asp:ListItem>Class</asp:ListItem>
+                <asp:ListItem>Course</asp:ListItem>
                 <asp:ListItem>Professor</asp:ListItem>
             </asp:DropDownList>
         &nbsp;
