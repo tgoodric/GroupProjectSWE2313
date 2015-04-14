@@ -19,7 +19,7 @@ namespace BookstorePage
                 {
                     if (value > Book.QtyNew)
                     {
-                        //display error message
+                        throw new Exception();
                     }
                     else qtyNew = value;
                 }
@@ -35,7 +35,7 @@ namespace BookstorePage
                 {
                     if (value > Book.QtyNew)
                     {
-                        //display error message
+                        throw new Exception();
                     }
                     else qtyUsed = value;
                 }
@@ -51,7 +51,7 @@ namespace BookstorePage
                 {
                     if (value > Book.QtyNew)
                     {
-                        //display error message
+                        throw new Exception();
                     }
                     else qtyRental = value;
                 }

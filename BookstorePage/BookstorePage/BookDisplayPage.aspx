@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookDisplayPage.aspx.cs" Inherits="BookstorePage.BookDisplayPage1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookDisplayPage.aspx.cs" Inherits="BookstorePage.DisplayBookOLD" %>
 
 <!DOCTYPE html>
 

@@ -11,7 +11,7 @@ namespace BookstorePage
 {
 
 
-    public partial class SearchResultsPage
+    public partial class LogInPage
     {
 
         /// <summary>

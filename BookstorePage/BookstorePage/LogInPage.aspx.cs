@@ -7,15 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace BookstorePage
 {
-    public partial class BookSearchResults : System.Web.UI.Page
+    public partial class LogInPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Book> results= (List<Book>)Session["Results"];
-            for (int i = 0; i < results.Count; i++)
-            {
-                
-            }
+
         }
     }
 }

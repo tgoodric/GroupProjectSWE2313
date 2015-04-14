@@ -10,7 +10,7 @@
 namespace BookstorePage {
     
     
-    public partial class BookDisplayPage1 {
+    public partial class DisplayBookOLD {
         
         /// <summary>
         /// form1 control.

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookSearch.aspx.cs" Inherits="BookstorePage.BookSearch" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookSearch.aspx.cs" Inherits="BookstorePage.BookSearchResults" %>
 
 <!DOCTYPE html>
 
@@ -12,6 +12,8 @@
     
         Placeholder Text<br />
         <asp:Label ID="Label1" runat="server" Text="Results"></asp:Label>
+        :<br />
+        <br />
     
     </div>
     </form>

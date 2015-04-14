@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+#pragma warning disable 0168, 0659
 
 namespace BookstorePage
 {
@@ -11,7 +12,7 @@ namespace BookstorePage
         public string Author { get; set; }
         public string ISBNNumber { get; set; }
         public string Professor { get; set; }
-        public string Use { get; set; }
+        public string Use { get; set; }//required/recommended
         public int QtyNew { get; set; }
         public int QtyUsed { get; set; }
         public int QtyRental { get; set; }
@@ -98,6 +99,11 @@ namespace BookstorePage
             this.Description = components[17];
         }
         
+        public void display()
+        {
+            //Labe
+        }
+
         public override bool Equals(Object other)
         {
             if (other is Book)

@@ -10,7 +10,7 @@
 namespace BookstorePage {
     
     
-    public partial class BookSearch {
+    public partial class BookSearchResults {
         
         /// <summary>
         /// form1 control.

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BookstorePage
 {
-    public class BookDisplayPage
+    public class BookDisplayPage_OLD
     {
     }
 }

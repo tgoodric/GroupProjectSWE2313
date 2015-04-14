@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BookstorePage
 {
-    public partial class BookDisplayPage1 : System.Web.UI.Page
+    public partial class DisplayBookOLD : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+#pragma warning disable 0168, 0659
 
 namespace BookstorePage
 {
