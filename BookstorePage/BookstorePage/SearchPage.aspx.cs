@@ -14,12 +14,13 @@ namespace BookstorePage
             List<Book> results = (List<Book>)Session["SearchResults"];
             if (results.Count < 1)
             {
-                Results.Text = (string)Session["SearchKey"];
-                
+                //Results.Text = (string)Session["SearchKey"];
+                Results.Text = "No results found.";
             }
             else
             {
-            //here there be dragons: HTML
+                Results.Text = results.Count + " Matches found:";
+               //here there be dragons: HTML
                for (int i = 0; i < results.Count; i++)
                {
                    //magic happens, results appear
