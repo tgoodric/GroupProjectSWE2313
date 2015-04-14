@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 #pragma warning disable 0168, 0659 //ignores unused var names warning
@@ -13,7 +14,7 @@ namespace BookstorePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["Attempts"] = 0;
+            //Session["Attempts"] = 0;
         }
 
         protected void UsernameField_TextChanged(object sender, EventArgs e)
@@ -23,8 +24,8 @@ namespace BookstorePage
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            System.IO.StreamReader fileIn = new System.IO.StreamReader("C:\\Users\\Tristan D Goodrich\\Documents\\GitHub\\GroupProjectSWE2313\\BookstorePage\\BookstorePage\\passwords.txt");
-            //System.IO.StreamReader fileIn = new System.IO.StreamReader("passwords.txt");
+            //System.IO.StreamReader fileIn = new System.IO.StreamReader("C:\\Users\\Tristan D Goodrich\\Documents\\GitHub\\GroupProjectSWE2313\\BookstorePage\\BookstorePage\\passwords.txt");
+            System.IO.StreamReader fileIn = new System.IO.StreamReader(Server.MapPath("passwords.txt"));
             bool matchFound = false;
             string current = null;
             string[] split = null;

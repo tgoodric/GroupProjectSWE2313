@@ -1,15 +1,60 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Homepage.aspx.cs" Inherits="BookstorePage.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="BookstorePage.Login" %>
 
 <!DOCTYPE html>
 
 <script runat="server">
 
+    protected void Page_Load(object sender,EventArgs e)//Oh god please work
+    {
+        #pragma warning disable 0168
+        {
+            char[] delimiters = { '\t' };
+            string currentBook = null;
+            string[] split = null;
+            System.IO.StreamReader fileIn = null;
+            //List<Book> booksList = new List<Book>();
+            Session["Books"] = new List<BookstorePage.Book>();
+            Session["Cart"] = new BookstorePage.Cart();
+            List<BookstorePage.Book> booksList = (List<BookstorePage.Book>)Session["Books"];
+            try
+            {
+                //fileIn = new StreamReader("C:\\Users\\Tristan D Goodrich\\Documents\\GitHub\\GroupProjectSWE2313\\BookstorePage\\BookstorePage\\bookDataVersion1.txt");
+                fileIn = new System.IO.StreamReader(Server.MapPath("bookDataVersion1.txt"));
+                while (fileIn.Peek() != -1)
+                {
+                    //create new Book objects
+                    currentBook = fileIn.ReadLine();
+                    //Label1.Text = currentBook; //debug code
+                    if (currentBook[0] == '9')
+                    {
+                        split = currentBook.Split(delimiters);
+                        //nasty constructor call changed for the sake of not having a 4-line constructor call
+                        booksList.Add(new BookstorePage.Book(split));
+                    }
+                }
+                Session["Books"] = booksList;
+            }
+            catch (System.IO.IOException ioex)
+            {
+                //LabelError.Text = "Error: file parsing failure, aborting operation";
+            }
+            catch (FormatException forex)
+            {
+                //Label1.Text = booksList[booksList.Count - 1].ISBNNumber;
+            }
+            finally
+            {
+                fileIn.Close();
+            }
 
-protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        }
+    }
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         string searchBy = "";
         searchBy = "Title";
         Session["SearchKey"] = searchBy;
+    
     }
 
     protected void Search_Click(object sender, EventArgs e)
@@ -18,6 +63,7 @@ protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         Session["SearchResults"] = new List<BookstorePage.Book>();
         List<BookstorePage.Book> results = (List<BookstorePage.Book>)Session["SearchResults"];
         string searchBy = (string)Session["SearchKey"];
+        //List[]
         List<BookstorePage.Book> books = (List<BookstorePage.Book>)Session["Books"];
         //provisional:
         string searchTerm;
@@ -83,13 +129,23 @@ protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
                         }
                         break;
                     }
+                case "Section":
+                    {
+                        if (books[i].Semester.Contains(searchTerm))
+                        {
+                            results.Add(books[i]);
+                        }
+                        break;
+                    }
                 default:
                     {
                         break;
                     }
             }
-            Response.Redirect("SearchResultsPage.aspx");
+            
         }
+        Session["SearchResults"] = results;
+        Response.Redirect("SearchResultsPage.aspx");
     }
 
 </script>

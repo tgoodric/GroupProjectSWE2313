@@ -24,8 +24,7 @@ namespace BookstorePage
             try
             {
                 //fileIn = new StreamReader("C:\\Users\\Tristan D Goodrich\\Documents\\GitHub\\GroupProjectSWE2313\\BookstorePage\\BookstorePage\\bookDataVersion1.txt");
-                fileIn = new StreamReader("bookDataVersion1.txt");
-
+                fileIn = new System.IO.StreamReader(Server.MapPath("bookDataVersion1.txt"));
                 while (fileIn.Peek() != -1)
                 {
                     //create new Book objects
