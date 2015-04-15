@@ -27,7 +27,8 @@ namespace BookstorePage
         public string Course { get; set; }
         public string Section { get; set; }
 
-        public Book(string isbn, string title, string author, string semest, string cour, string sect, string prof, string crn, string use, int qtyN, int qtyU, int qtyR,
+        public Book(string isbn, string title, string author, string semest, string cour, string sect, 
+                    string prof, string crn, string use, int qtyN, int qtyU, int qtyR,
                     bool eBookAvail, float priceN, float priceU, float priceR, float priceE,
                     string descr) //massive constructor for a not-terribly-complex object
         {
@@ -117,6 +118,36 @@ namespace BookstorePage
             return false;
         }
 
+        public override string ToString()
+        {
+            string retVal = "";
+            retVal += (ISBNNumber + "\t");
+            retVal += (Title +"\t");
+            retVal += (Author + "\t");
+            retVal += (Semester + "\t");
+            retVal += (Course + "\t");
+            retVal += (Section + "\t");
+            retVal += (Professor + "\t");
+            retVal += (CRNNumber + "\t");
+            retVal += (Use + "\t");
+            retVal += (QtyNew + "\t");
+            retVal += (QtyUsed + "\t");
+            retVal += (QtyRental + "\t");
+            if (EBookAvailable)
+            {
+                retVal += (999999 + "\t");
+            }
+            else
+            {
+                retVal += (0 + "\t");
+            }
+            retVal += (PriceNew + "\t");
+            retVal += (PriceUsed + "\t");
+            retVal += (PriceRental + "\t");
+            retVal += (PriceEBook + "\t");
+            retVal += Description;
+            return retVal;
+        }
     }
 
 }

@@ -7,7 +7,7 @@ namespace BookstorePage
 {
     public class Cart //List<BookOrder> with a couple extra functions
     {
-        List<BookOrder> books;
+        public List<BookOrder> books;
         public Cart()
         {
             books = new List<BookOrder>();
