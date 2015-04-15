@@ -4,7 +4,7 @@
 
 <script runat="server">
 
-    protected void Page_Load(object sender,EventArgs e)//Oh god please work
+    protected void Page_Load(object sender,EventArgs e)
     {
         #pragma warning disable 0168
         {
@@ -18,13 +18,11 @@
             List<BookstorePage.Book> booksList = (List<BookstorePage.Book>)Session["Books"];
             try
             {
-                //fileIn = new StreamReader("C:\\Users\\Tristan D Goodrich\\Documents\\GitHub\\GroupProjectSWE2313\\BookstorePage\\BookstorePage\\bookDataVersion1.txt");
                 fileIn = new System.IO.StreamReader(Server.MapPath("bookDataVersion1.txt"));
                 while (fileIn.Peek() != -1)
                 {
                     //create new Book objects
                     currentBook = fileIn.ReadLine();
-                    //Label1.Text = currentBook; //debug code
                     if (currentBook[0] == '9')
                     {
                         split = currentBook.Split(delimiters);
@@ -40,14 +38,13 @@
             }
             catch (FormatException forex)   //Shouldn't occur, logic was set to find isbn of 
             {                               //books with extraneous commas in csv file
-                //Label1.Text = booksList[booksList.Count - 1].ISBNNumber;
+                Label1.Text = "Data formatting error, aborting operation";
                 //Format of book list file changed to tab-separated text file
             }
             finally
             {
                 fileIn.Close();
             }
-
         }
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,7 +105,7 @@
                         }
                         break;
                     }
-                case "CRN"://workaround
+                case "CRN":
                     {
                         
                         if (books[i].CRNNumber.Contains(searchTerm))

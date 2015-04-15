@@ -102,7 +102,7 @@ namespace BookstorePage
         
         public void display()
         {
-            //Labe
+            //
         }
 
         public override bool Equals(Object other)

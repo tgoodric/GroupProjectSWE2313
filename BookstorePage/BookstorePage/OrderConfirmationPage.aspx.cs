@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+#pragma warning disable 0168
 
 namespace BookstorePage
 {
@@ -12,18 +13,45 @@ namespace BookstorePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //display cart via html magic
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             List<Book> booksList = (List<Book>)Session["Books"];
             Cart cart = (Cart)Session["Cart"];
-            for (int i = 0; i < cart.books.Count; i++)
+            //begin new code
+            for (int i = 0; i < cart.books.Count; i++) //outer loop iterates through cart
             {
-                //Update book entries 
-                //= cart.books[i].
-            } 
+                for (int j = 0; j < booksList.Count; j++) //inner loop iterates through list of books
+                {
+                    if (cart.books[i].Book.Equals(booksList[j]))
+                    {
+                        booksList[j].QtyNew -= cart.books[i].QuantityNew;
+                        booksList[j].QtyUsed -= cart.books[i].QuantityUsed;
+                        booksList[j].QtyRental -= cart.books[i].QuantityRental;
+                    }
+                }
+            }
+            StreamWriter booksOut = null;
+            try
+            {
+                booksOut = new StreamWriter(Server.MapPath("bookDataVersion1.txt"));
+                //I think that's the right command...
+                for (int i = 0; i < booksList.Count; i++)
+                {
+                    booksOut.WriteLine(booksList[i].ToString());
+                }
+            }
+            catch (IOException ioex)
+            {
+                //display something saying it's borked
+            }
+            finally
+            {
+                booksOut.Close();
+            }
+            //end new code
         }
     }
 }
