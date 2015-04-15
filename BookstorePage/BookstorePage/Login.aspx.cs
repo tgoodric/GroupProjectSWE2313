@@ -14,7 +14,7 @@ namespace BookstorePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["Attempts"] = 0;
+            Session["Attempts"] = 0;
         }
 
         protected void UsernameField_TextChanged(object sender, EventArgs e)

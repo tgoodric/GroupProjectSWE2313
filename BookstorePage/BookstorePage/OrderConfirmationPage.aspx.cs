@@ -16,7 +16,7 @@ namespace BookstorePage
             //display cart via html magic
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e) //check this
         {
             List<Book> booksList = (List<Book>)Session["Books"];
             Cart cart = (Cart)Session["Cart"];

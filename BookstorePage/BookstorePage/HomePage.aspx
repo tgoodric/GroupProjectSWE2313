@@ -70,12 +70,12 @@
         bool validSelection = true;
         for (int i = 0; i < books.Count; i++)
         {
-            searchTerm = TextBox1.Text;
+            searchTerm = TextBox1.Text.ToLower();
             switch (searchBy)
             {
                 case "Title":
                     {
-                        if (books[i].Title.Contains(searchTerm))
+                        if (books[i].Title.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }    
@@ -83,7 +83,7 @@
                     }
                 case "Author":
                     {
-                        if (books[i].Author.Contains(searchTerm))
+                        if (books[i].Author.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -91,7 +91,7 @@
                     }
                 case "Professor":
                     {
-                        if (books[i].Professor.Contains(searchTerm))
+                        if (books[i].Professor.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -99,7 +99,7 @@
                     }
                 case "Course":
                     {
-                        if (books[i].Course.Contains(searchTerm))
+                        if (books[i].Course.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -108,7 +108,7 @@
                 case "CRN":
                     {
                         
-                        if (books[i].CRNNumber.Contains(searchTerm))
+                        if (books[i].CRNNumber.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -116,7 +116,7 @@
                     }
                 case "ISBN":
                     {
-                        if (books[i].ISBNNumber.Contains(searchTerm))
+                        if (books[i].ISBNNumber.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -124,7 +124,7 @@
                     }
                 case "Semester":
                     {
-                        if (books[i].Semester.Contains(searchTerm))
+                        if (books[i].Semester.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
@@ -132,7 +132,7 @@
                     }
                 case "Section":
                     {
-                        if (books[i].Semester.Contains(searchTerm))
+                        if (books[i].Semester.ToLower().Contains(searchTerm))
                         {
                             results.Add(books[i]);
                         }
