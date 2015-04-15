@@ -20,6 +20,7 @@ namespace BookstorePage
 
         protected void Button1_Click(object sender, EventArgs e) //check this
         {
+            string username = (string) Session["Username"];
             StringBuilder sb = new StringBuilder();
             try
             {
@@ -28,6 +29,7 @@ namespace BookstorePage
                 {
                     sb.AppendLine(reader.ReadLine());
                 }
+                
             }
             catch(IOException ioex)
             {
@@ -68,11 +70,17 @@ namespace BookstorePage
                 writer.Close();
                 writer = null;
             }
-            //Begin record code: may be eliminated
+            //Begin record code: may be eliminated in future
             try
             {
                 writer = new StreamWriter(Server.MapPath("TransactionRecord.txt"));
                 //dump records to file
+                //add books and total to new record
+                sb.Append(username + "\t");
+                foreach (BookOrder order in cart.books)
+                {
+                    sb.Append(order.Book.Title);
+                }
                 writer.Write(sb.ToString());
             }
             catch(IOException ioex)
