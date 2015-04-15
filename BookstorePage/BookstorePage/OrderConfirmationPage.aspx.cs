@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 #pragma warning disable 0168
@@ -13,11 +14,26 @@ namespace BookstorePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             //display cart via html magic
         }
 
         protected void Button1_Click(object sender, EventArgs e) //check this
         {
+            StringBuilder sb = new StringBuilder();
+            try
+            {
+                StreamReader reader = new StreamReader(Server.MapPath("TransactionRecord.txt"));
+                while(reader.Peek() != -1)
+                {
+                    sb.AppendLine(reader.ReadLine());
+                }
+            }
+            catch(IOException ioex)
+            {
+                //display end of file
+            }
+            
             List<Book> booksList = (List<Book>)Session["Books"];
             Cart cart = (Cart)Session["Cart"];
             //begin new code
@@ -33,14 +49,14 @@ namespace BookstorePage
                     }
                 }
             }
-            StreamWriter booksOut = null;
+            StreamWriter writer = null;
             try
             {
-                booksOut = new StreamWriter(Server.MapPath("bookDataVersion1.txt"));
+                writer = new StreamWriter(Server.MapPath("bookDataVersion1.txt"));
                 //I think that's the right command...
                 for (int i = 0; i < booksList.Count; i++)
                 {
-                    booksOut.WriteLine(booksList[i].ToString());
+                    writer.WriteLine(booksList[i].ToString());
                 }
             }
             catch (IOException ioex)
@@ -49,7 +65,24 @@ namespace BookstorePage
             }
             finally
             {
-                booksOut.Close();
+                writer.Close();
+                writer = null;
+            }
+            //Begin record code: may be eliminated
+            try
+            {
+                writer = new StreamWriter(Server.MapPath("TransactionRecord.txt"));
+                //dump records to file
+                writer.Write(sb.ToString());
+            }
+            catch(IOException ioex)
+            {
+                //do the same thing as above
+            }
+            finally
+            {
+                writer.Close();
+                writer = null;
             }
             //end new code
         }

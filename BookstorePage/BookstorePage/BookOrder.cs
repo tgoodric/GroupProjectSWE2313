@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+#pragma warning disable 0659
 
 namespace BookstorePage
 {
@@ -76,6 +77,21 @@ namespace BookstorePage
                     total += Book.PriceEBook;
                 }
                 return total;
+            }
+
+            public override string ToString()
+            {
+                string retVal = "";
+                retVal += Book.Title;
+                retVal += "\t";
+                retVal += QuantityNew;
+                retVal += "\t";
+                retVal += QuantityUsed;
+                retVal += "\t";
+                retVal += QuantityRental;
+                retVal += "\t";
+                retVal += this.getTotal();
+                return retVal;
             }
         }
     }

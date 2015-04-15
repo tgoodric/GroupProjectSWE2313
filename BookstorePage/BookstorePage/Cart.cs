@@ -56,5 +56,11 @@ namespace BookstorePage
             }
             return total;
         }
+
+        public override string ToString()
+        {
+            string retVal = "";
+            return retVal;
+        }
     }
 }
