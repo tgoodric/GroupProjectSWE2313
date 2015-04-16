@@ -11,7 +11,7 @@ namespace BookstorePage
 {
 
 
-    public partial class OrderHistory
+    public partial class WebForm6
     {
 
         /// <summary>
