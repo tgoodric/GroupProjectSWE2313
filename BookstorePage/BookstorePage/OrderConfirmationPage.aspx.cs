@@ -12,28 +12,31 @@ namespace BookstorePage
 {
     public partial class OrderConfirmationPage : System.Web.UI.Page
     {
+        StringBuilder builder;
+        StreamWriter writer;
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             //display cart via html magic
         }
 
         protected void Button1_Click(object sender, EventArgs e) //check this
         {
-            StringBuilder sb = new StringBuilder();
+            //StringBuilder builder;
             try
             {
+                builder = new StringBuilder();
                 StreamReader reader = new StreamReader(Server.MapPath("TransactionRecord.txt"));
-                while(reader.Peek() != -1)
+                while (reader.Peek() != -1)
                 {
-                    sb.AppendLine(reader.ReadLine());
+                    builder.AppendLine(reader.ReadLine());
                 }
             }
-            catch(IOException ioex)
+            catch (IOException ioex)
             {
                 //display end of file
             }
-            
+
             List<Book> booksList = (List<Book>)Session["Books"];
             Cart cart = (Cart)Session["Cart"];
             //begin new code
@@ -49,7 +52,7 @@ namespace BookstorePage
                     }
                 }
             }
-            StreamWriter writer = null;
+            //StreamWriter writer;
             try
             {
                 writer = new StreamWriter(Server.MapPath("bookDataVersion1.txt"));
@@ -68,35 +71,43 @@ namespace BookstorePage
                 writer.Close();
             }
             //Begin record code: may be eliminated
+            //string oldRecord = builder.ToString();
             try
             {
-                writer = new StreamWriter(Server.MapPath("TransactionRecord.txt"));
+                //StringBuilder builder = new StringBuilder(oldRecord);
+                StreamWriter logWriter = new StreamWriter(Server.MapPath("TransactionRecord.txt"));
                 //dump records to file
-<<<<<<< HEAD
+                string username = (string)Session["Username"];
                 //add books and total to new record
-                sb.Append(username + "\t");
+                builder.Append(username + "\t");
                 foreach (BookOrder order in cart.books)
                 {
-                    //sb.Append(order.Book.Title);
-                    //sb.Append
-                    //sb.Append("\t");
+                    builder.Append(order.Book.Title);
+                    builder.Append("\t");
+                    builder.Append(order.QuantityNew);
+                    builder.Append("\t");
+                    builder.Append(order.QuantityUsed);
+                    builder.Append("\t");
+                    builder.Append(order.QuantityRental);
+                    builder.Append("\t");
+                    builder.Append(order.getTotal());
+                    builder.Append("\t");
                     //sb.
                 }
-                sb.AppendLine();
-=======
->>>>>>> parent of c4b1509... Cleaned up old files
-                writer.Write(sb.ToString());
+                builder.Append(cart.getOrderTotal());
+                builder.AppendLine();
+
+                logWriter.Write(builder.ToString());
             }
-            catch(IOException ioex)
+            catch (IOException ioex)
             {
                 //do the same thing as above
             }
+            //end new code'
             finally
             {
                 writer.Close();
-                writer = null;
             }
-            //end new code'
             Response.Redirect("~/HomePage.aspx");
         }
     }
