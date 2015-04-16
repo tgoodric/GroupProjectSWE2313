@@ -18,7 +18,7 @@
     
        
 
-       <asp:Table ID="resultsTable" runat="server" />
+       <asp:GridView ID="gridView1" runat="server" />
 
     </div>
     </form>

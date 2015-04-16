@@ -14,7 +14,7 @@
             System.IO.StreamReader fileIn = null;
             //List<Book> booksList = new List<Book>();
             Session["Books"] = new List<BookstorePage.Book>();
-            Session["Cart"] = new BookstorePage.Cart();
+            
             List<BookstorePage.Book> booksList = (List<BookstorePage.Book>)Session["Books"];
             try
             {

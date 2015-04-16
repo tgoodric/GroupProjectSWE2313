@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SearchPage.aspx.cs" Inherits="BookstorePage.SearchResultsPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SearchPage.aspx.cs" Inherits="BookstorePage.SearchPage" %>
 
 <!DOCTYPE html>
 
@@ -10,9 +10,21 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Label ID="Results" runat="server" Text="Label"></asp:Label>
+        <asp:Image ID="BannerImg" runat="server" Height="179px" ImageUrl="~/Images/bookstorebanner.png" Width="1373px" />
+
+        <br />
+        
+       <p style=" font: bold 20px arial"> DISPLAYING SEARCH RESULTS</p>
     
+       
+
+       <asp:GridView ID="gridView1" runat="server" />
+        
+
+        <br />
+
     </div>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="BookDisplayPage.aspx" />
     <Content Include="BookSearch.aspx" />
+    <Content Include="CartPage.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="CreditCardValidation.aspx" />
     <Content Include="DisplayBook.aspx" />
@@ -96,6 +97,13 @@
       <DependentUpon>BookSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cart.cs" />
+    <Compile Include="CartPage.aspx.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CartPage.aspx.designer.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

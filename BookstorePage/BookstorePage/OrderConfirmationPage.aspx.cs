@@ -68,7 +68,6 @@ namespace BookstorePage
             finally
             {
                 writer.Close();
-                writer = null;
             }
             //Begin record code: may be eliminated in future
             try
@@ -79,8 +78,12 @@ namespace BookstorePage
                 sb.Append(username + "\t");
                 foreach (BookOrder order in cart.books)
                 {
-                    sb.Append(order.Book.Title);
+                    //sb.Append(order.Book.Title);
+                    //sb.Append
+                    //sb.Append("\t");
+                    //sb.
                 }
+                sb.AppendLine();
                 writer.Write(sb.ToString());
             }
             catch(IOException ioex)
@@ -92,7 +95,8 @@ namespace BookstorePage
                 writer.Close();
                 writer = null;
             }
-            //end new code
+            //end new code'
+            Response.Redirect("~/HomePage.aspx");
         }
     }
 }

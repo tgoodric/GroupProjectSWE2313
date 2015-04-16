@@ -16,17 +16,17 @@ namespace BookstorePage
         public void addNewBook(Book book, byte numNew, byte numUsed, byte numRental, bool eBook) //overwrites duplicates
         {
             bool duplicate = false;
-            for (int i = 0; i < books.Count; i++)
-            {
-                if (book.Equals(books[i].Book))
-                {
-                    books[i].QuantityNew = numNew;
-                    books[i].QuantityUsed = numUsed;
-                    books[i].QuantityRental = numRental;
-                    books[i].EBookPurchased = eBook;
-                    duplicate = true;
-                }
-            }
+            //for (int i = 0; i < books.Count; i++)
+            //{
+            //    if (book.Equals(books[i].Book))
+            //    {
+            //        books[i].QuantityNew = numNew;
+            //        books[i].QuantityUsed = numUsed;
+            //        books[i].QuantityRental = numRental;
+            //        books[i].EBookPurchased = eBook;
+            //        duplicate = true;
+            //    }
+            //}
             if (!duplicate)
             {
                 books.Add(new BookOrder(book, numNew, numUsed, numRental, eBook));

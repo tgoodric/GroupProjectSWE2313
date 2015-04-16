@@ -120,7 +120,7 @@ namespace BookstorePage
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //redirect to somewhere
+            Response.Redirect("~/CartPage.aspx");
         }
     }
 }
