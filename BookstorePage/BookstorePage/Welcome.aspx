@@ -18,6 +18,7 @@
     protected void GuestButton_Click(object sender, EventArgs e)
     {
         //REDIRECT TO HOME PAGE
+        Session["Username"] = "Guest";
         Response.Redirect("HomePage.aspx");
     }
     

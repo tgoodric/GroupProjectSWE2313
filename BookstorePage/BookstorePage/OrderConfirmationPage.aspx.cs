@@ -69,44 +69,49 @@ namespace BookstorePage
             finally
             {
                 writer.Close();
+                //writer = null;
             }
             //Begin record code: may be eliminated
             //string oldRecord = builder.ToString();
             try
             {
                 //StringBuilder builder = new StringBuilder(oldRecord);
-                StreamWriter logWriter = new StreamWriter(Server.MapPath("TransactionRecord.txt"));
+                writer = new StreamWriter(Server.MapPath("Transactions.txt"),true);
                 //dump records to file
                 string username = (string)Session["Username"];
                 //add books and total to new record
-                builder.Append(username + "\t");
-                foreach (BookOrder order in cart.books)
+                writer.Write(username + "\t");
+                for (int i = 0; i < cart.books.Count; i++)
                 {
-                    builder.Append(order.Book.Title);
-                    builder.Append("\t");
-                    builder.Append(order.QuantityNew);
-                    builder.Append("\t");
-                    builder.Append(order.QuantityUsed);
-                    builder.Append("\t");
-                    builder.Append(order.QuantityRental);
-                    builder.Append("\t");
-                    builder.Append(order.getTotal());
-                    builder.Append("\t");
+                    writer.Write(cart.books[i].Book.Title);
+                    writer.Write("\t");
+                    writer.Write(cart.books[i].QuantityNew);
+                    writer.Write("\t");
+                    writer.Write(cart.books[i].QuantityUsed);
+                    writer.Write("\t");
+                    writer.Write(cart.books[i].QuantityRental);
+                    writer.Write("\t");
+                    writer.Write(cart.books[i].EBookPurchased);
+                    writer.Write("\t");
+                    writer.Write(cart.books[i].getTotal());
+                    writer.Write("\t");
                     //sb.
                 }
-                builder.Append(cart.getOrderTotal());
-                builder.AppendLine();
-
-                logWriter.Write(builder.ToString());
+                writer.Write(cart.getOrderTotal());
+                writer.WriteLine();
+                //Label1.Text = builder.ToString();
+                //writer.Write(builder.ToString());
             }
-            catch (IOException ioex)
-            {
+            //catch (IOException ioex)
+            //{
                 //do the same thing as above
-            }
+            //}
             //end new code'
             finally
             {
+                
                 writer.Close();
+                writer = null;
             }
             Response.Redirect("~/HomePage.aspx");
         }

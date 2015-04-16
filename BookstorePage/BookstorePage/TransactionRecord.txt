@@ -1,0 +1,1 @@
+Username	Title	New	Used	Rental	E-Book? Subtotal (Repeat for each book)	Total

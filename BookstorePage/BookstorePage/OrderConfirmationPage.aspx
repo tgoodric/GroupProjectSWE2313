@@ -11,6 +11,8 @@
     <div>
     
         Placeholder page<br />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
         <asp:Button ID="CompleteTransaction" runat="server" OnClick="Button1_Click" Text="Complete Transaction" />
     
     </div>
